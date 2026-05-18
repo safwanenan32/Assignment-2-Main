@@ -12,7 +12,7 @@
   "layer": [
     {
       "data": {
-        "url": "../data/australia_states.topojson",
+        "url": "data/australia_states.topojson",
         "format": {
           "type": "topojson",
           "feature": "GCCSA_2021_AUST_GDA2020"
