@@ -4,7 +4,7 @@
   "height": 360,
   "title": "Average Rainfall Over Time by State",
   "data": {
-    "url": "/data/rainfall_yearly_summary.csv"
+    "url": "data/rainfall_yearly_summary.csv"
   },
  "transform": [
   {
