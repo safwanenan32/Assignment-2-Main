@@ -4,7 +4,7 @@
   "height": 360,
   "title": "Wind Direction and Rain Tomorrow",
   "data": {
-    "url": "../data/rainfall_wind_direction_summary.csv"
+    "url": "data/rainfall_wind_direction_summary.csv"
   },
   "transform": [
     {
