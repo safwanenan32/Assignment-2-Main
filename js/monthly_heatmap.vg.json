@@ -4,7 +4,7 @@
   "height": 520,
   "title": "Monthly Rainfall Pattern Across Australian Weather Locations",
   "data": {
-    "url": "../data/rainfall_monthly_summary.csv"
+    "url": "data/rainfall_monthly_summary.csv"
   },
   "transform": [
     {
