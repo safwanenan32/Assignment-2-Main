@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 720,
+  "height": 360,
+  "title": "Wind Direction and Rain Tomorrow",
+  "data": {
+    "url": "../data/rainfall_wind_direction_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.WindGustDir != null && datum.RainTomorrowRate != null"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "WindGustDir",
+      "type": "ordinal",
+      "title": "Wind gust direction",
+      "sort": {
+        "field": "DirectionOrder",
+        "order": "ascending"
+      }
+    },
+    "y": {
+      "field": "RainTomorrowRate",
+      "type": "quantitative",
+      "title": "Rain tomorrow rate (%)"
+    },
+    "color": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Avg rainfall (mm)",
+      "scale": {
+        "scheme": "blues"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "WindGustDir",
+        "type": "ordinal",
+        "title": "Wind direction"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall (mm)",
+        "format": ".2f"
+      },
+      {
+        "field": "Count",
+        "type": "quantitative",
+        "title": "Records"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

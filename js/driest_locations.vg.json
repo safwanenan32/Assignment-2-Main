@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 420,
+  "height": 300,
+  "title": "Driest Australian Weather Locations",
+  "data": {
+    "url": "../data/rainfall_location_summary.csv"
+  },
+  "transform": [
+  {
+    "filter": "datum.State != null && datum.State != '' && datum.State != 'nan'"
+  },
+  {
+    "window": [
+      {
+        "op": "rank",
+        "as": "rank"
+      }
+    ],
+    "sort": [
+      {
+        "field": "AvgRainfall",
+        "order": "ascending"
+      }
+    ]
+  },
+  {
+    "filter": "datum.rank <= 10"
+  }
+],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Average daily rainfall (mm)"
+    },
+    "y": {
+      "field": "Location",
+      "type": "nominal",
+      "sort": "x",
+      "title": null
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
+    },
+    "tooltip": [
+      {"field": "Location", "type": "nominal"},
+      {"field": "State", "type": "nominal"},
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall",
+        "format": ".2f"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate",
+        "format": ".1f"
+      }
+    ]
+  }
+}

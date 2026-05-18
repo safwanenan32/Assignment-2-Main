@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Australia’s Rainfall Divide</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <p class="eyebrow">Australian Weather Data Visualisation</p>
+      <h1>Australia’s Rainfall Divide</h1>
+      <p class="hero-text">
+        Rain does not fall evenly across Australia. This visual story explores where rainfall is strongest,
+        how rainfall changes across seasons, and which weather conditions are linked with rain the next day.
+      </p>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="section">
+      <h2>1. Where Does Rain Fall Across Australia?</h2>
+      <p>
+        The map shows weather locations across Australia using matched city coordinates. Larger circles represent
+        higher average rainfall, while darker blue circles show locations where rain tomorrow was more common.
+      </p>
+      <div id="rainfall_map" class="vis"></div>
+    </section>
+
+    <!-- WETTEST AND DRIEST SECTION -->
+    <section class="section">
+      <h2>2. The Wettest and Driest Locations Show a Clear Divide</h2>
+      <p>
+        Australia’s rainfall pattern is highly uneven. Some coastal and northern locations receive much more
+        rainfall than inland and dry-region locations.
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Wettest Australian Weather Locations</h3>
+          <div id="wettest_locations" class="vis"></div>
+        </div>
+
+        <div>
+          <h3>Driest Australian Weather Locations</h3>
+          <div id="driest_locations" class="vis"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MONTHLY HEATMAP -->
+    <section class="section">
+      <h2>3. Rainfall Changes by Month</h2>
+      <p>
+        Rainfall is not only different by place. It also changes across the year. Darker blue cells show months
+        with higher average rainfall, helping reveal seasonal rainfall patterns.
+      </p>
+      <div id="monthly_heatmap" class="vis"></div>
+    </section>
+
+    <!-- YEARLY TREND -->
+    <section class="section">
+      <h2>4. Rainfall Varies Over Time</h2>
+      <p>
+        This chart shows how average rainfall varied across the recorded years. It should be read as rainfall
+        variation within this dataset, not as complete proof of long-term climate change.
+      </p>
+      <div id="yearly_trend" class="vis"></div>
+    </section>
+
+    <!-- RAINY DAYS SCATTER -->
+    <section class="section">
+      <h2>5. Rainy Days Are Not Always Heavy Rain</h2>
+      <p>
+        This scatterplot compares how often rain occurs with how much rain falls on average. Larger circles show
+        locations with more heavy rain days.
+      </p>
+      <div id="rainy_days_scatter" class="vis"></div>
+    </section>
+
+    <!-- RAIN TOMORROW -->
+    <section class="section">
+      <h2>6. Where Is Rain Tomorrow Most Likely?</h2>
+      <p>
+        This chart ranks the locations where rain was most likely to occur the next day in the historical dataset.
+        It shows likelihood based on past records, not a live forecast.
+      </p>
+      <div id="rain_tomorrow_lollipop" class="vis"></div>
+    </section>
+
+    <!-- WEATHER CONDITION SECTION -->
+    <section class="section">
+      <h2>7. What Weather Conditions Are Linked With Rain Tomorrow?</h2>
+      <p>
+        Humidity and pressure are useful weather signals. They do not prove direct causation by themselves,
+        but they show conditions commonly associated with rain the next day.
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Humidity and Rain Tomorrow</h3>
+          <div id="humidity_predictor" class="vis"></div>
+        </div>
+
+        <div>
+          <h3>Pressure and Rain Tomorrow</h3>
+          <div id="pressure_predictor" class="vis"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WIND SECTION -->
+    <section class="section">
+      <h2>8. Wind Direction and Rain Tomorrow</h2>
+      <p>
+        Wind direction can reveal how incoming weather patterns are associated with rain the next day.
+        The chart compares rain tomorrow rates across different wind gust directions.
+      </p>
+      <div id="wind_direction" class="vis"></div>
+    </section>
+
+    <!-- FINAL PROFILE -->
+    <section class="section conclusion-section">
+      <h2>9. Final Rainfall Profile</h2>
+      <p>
+        The final view groups selected locations into simple rainfall profiles based on rainfall frequency,
+        rainfall amount, and rain tomorrow rate. This summarises the main story: rainfall risk differs strongly
+        depending on where you are in Australia.
+      </p>
+      <div id="rainfall_profile_cards" class="vis"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p><strong>Created by:</strong> Abyead Safwan Enan</p>
+      <p><strong>Date:</strong> May 2026</p>
+      <p><strong>Data sources:</strong> weatherAUS dataset and Australian city coordinate/population dataset.</p>
+      <p><strong>Note:</strong> Some weather station names were matched to nearby city names to provide geographic context for mapping.</p>
+      <p><strong>AI acknowledgement:</strong> Generative AI was used to support planning, wording, code debugging, and visualisation structuring.</p>
+    </footer>
+
+  </main>
+
+  <script src="js/vega_lite_vis.js"></script>
+</body>
+</html>

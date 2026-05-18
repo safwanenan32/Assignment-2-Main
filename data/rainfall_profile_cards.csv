@@ -1,0 +1,13 @@
+Location,State,RainCategory,AvgRainfall,RainyDayRate,HeavyRainRate,RainTomorrowRate,Population,KeyMessage
+Portland,Victoria,Frequently wet,2.53,60.82,7.21,36.55,10900.0,"Portland is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+Walpole,,Frequently wet,2.91,48.17,9.35,33.66,,"Walpole is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+Cairns,Queensland,Frequently wet,5.74,44.41,12.7,31.79,152729.0,"Cairns is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+Dartmoor,,Frequently wet,2.15,52.21,5.82,31.33,,"Dartmoor is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+NorfolkIsland,,Frequently wet,3.13,51.91,8.01,31.01,,"NorfolkIsland is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+MountGambier,South Australia,Frequently wet,2.09,52.43,5.99,30.36,29639.0,"MountGambier is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+Albany,Western Australia,Frequently wet,2.26,44.38,7.2,29.91,34205.0,"Albany is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+Witchcliffe,,Frequently wet,2.9,47.96,8.94,29.78,,"Witchcliffe is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+CoffsHarbour,New South Wales,Frequently wet,5.06,40.31,11.86,29.43,71822.0,"CoffsHarbour is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+MountGinini,,Frequently wet,3.29,42.53,9.64,28.17,,"MountGinini is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+NorahHead,,Frequently wet,3.39,40.68,10.09,27.59,,"NorahHead is classified as frequently wet based on rainfall frequency, average rainfall, and rain tomorrow rate."
+Williamtown,New South Wales,Heavy-rain prone,3.59,32.9,8.64,27.42,322278.0,"Williamtown is classified as heavy-rain prone based on rainfall frequency, average rainfall, and rain tomorrow rate."

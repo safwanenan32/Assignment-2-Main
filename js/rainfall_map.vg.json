@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 820,
+  "height": 560,
+  "title": "Average Rainfall Across Australian Weather Locations",
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 760,
+    "translate": [410, 280]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "../data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "GCCSA_2021_AUST_GDA2020"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eef3f7",
+        "stroke": "#6b7785",
+        "strokeWidth": 0.75
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.GCC_NAME21",
+            "type": "nominal",
+            "title": "Region"
+          },
+          {
+            "field": "properties.STE_NAME21",
+            "type": "nominal",
+            "title": "State"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../data/state_labels.csv"
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#4b5563",
+        "opacity": 0.85
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "State",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "../data/rainfall_location_summary.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.Latitude != null && datum.Longitude != null && datum.AvgRainfall != null"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.78,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "AvgRainfall",
+          "type": "quantitative",
+          "title": "Average rainfall (mm)",
+          "scale": {
+            "range": [60, 900]
+          }
+        },
+        "color": {
+          "field": "RainTomorrowRate",
+          "type": "quantitative",
+          "title": "Rain tomorrow (%)",
+          "scale": {
+            "scheme": "blues"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Location",
+            "type": "nominal",
+            "title": "Weather location"
+          },
+          {
+            "field": "MatchedCity",
+            "type": "nominal",
+            "title": "Matched city"
+          },
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "title": "Average rainfall (mm)",
+            "format": ".2f"
+          },
+          {
+            "field": "RainyDayRate",
+            "type": "quantitative",
+            "title": "Rainy days (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "RainTomorrowRate",
+            "type": "quantitative",
+            "title": "Rain tomorrow (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

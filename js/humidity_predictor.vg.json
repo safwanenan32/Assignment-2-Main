@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 520,
+  "height": 320,
+  "title": "Afternoon Humidity and Rain Tomorrow",
+  "data": {
+    "url": "../data/rainfall_predictor_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Factor == 'Humidity3pm'"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Bin",
+      "type": "ordinal",
+      "title": "Afternoon humidity range (%)",
+      "sort": ["0-20", "20-40", "40-60", "60-80", "80-100"]
+    },
+    "y": {
+      "field": "RainTomorrowRate",
+      "type": "quantitative",
+      "title": "Rain tomorrow rate (%)"
+    },
+    "color": {
+      "field": "RainTomorrowRate",
+      "type": "quantitative",
+      "title": "Rain tomorrow (%)",
+      "scale": {
+        "scheme": "blues"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Factor",
+        "type": "nominal",
+        "title": "Weather factor"
+      },
+      {
+        "field": "Bin",
+        "type": "ordinal",
+        "title": "Range"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "Count",
+        "type": "quantitative",
+        "title": "Records"
+      }
+    ]
+  }
+}

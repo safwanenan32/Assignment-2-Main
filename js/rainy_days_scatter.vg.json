@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 720,
+  "height": 400,
+  "title": "Rainy Days vs Average Rainfall",
+  "data": {
+    "url": "../data/rainfall_location_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.RainyDayRate != null && datum.AvgRainfall != null"
+    }
+  ],
+  "mark": {
+    "type": "circle",
+    "opacity": 0.75,
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "RainyDayRate",
+      "type": "quantitative",
+      "title": "Rainy days (%)"
+    },
+    "y": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Average daily rainfall (mm)"
+    },
+    "size": {
+      "field": "HeavyRainRate",
+      "type": "quantitative",
+      "title": "Heavy rain days (%)",
+      "scale": {
+        "range": [50, 650]
+      }
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
+    },
+    "tooltip": [
+      {
+        "field": "Location",
+        "type": "nominal",
+        "title": "Location"
+      },
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall",
+        "format": ".2f"
+      },
+      {
+        "field": "RainyDayRate",
+        "type": "quantitative",
+        "title": "Rainy days (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "HeavyRainRate",
+        "type": "quantitative",
+        "title": "Heavy rain days (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "grid": true,
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

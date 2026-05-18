@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 720,
+  "height": 360,
+  "title": "Average Rainfall Over Time by State",
+  "data": {
+    "url": "../data/rainfall_yearly_summary.csv"
+  },
+ "transform": [
+  {
+    "filter": "datum.Year != null && datum.State != null && datum.State != '' && datum.State != 'nan' && datum.AvgRainfall != null"
+  }
+],
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Average daily rainfall (mm)"
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall",
+        "format": ".2f"
+      },
+      {
+        "field": "RainyDayRate",
+        "type": "quantitative",
+        "title": "Rainy day rate (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

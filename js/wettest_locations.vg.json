@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 360,
+  "height": 320,
+  "title": "Wettest Australian Weather Locations",
+  "data": {
+    "url": "../data/rainfall_location_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.State != null && datum.State != '' && datum.State != 'nan' && datum.AvgRainfall != null"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "AvgRainfall",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rank <= 10"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4,
+    "height": 20
+  },
+  "encoding": {
+    "x": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Average daily rainfall (mm)"
+    },
+    "y": {
+      "field": "Location",
+      "type": "nominal",
+      "sort": {
+        "field": "AvgRainfall",
+        "order": "descending"
+      },
+      "title": null
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State / Territory",
+      "legend": {
+        "orient": "right",
+        "labelLimit": 160
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Location",
+        "type": "nominal",
+        "title": "Weather location"
+      },
+      {
+        "field": "MatchedCity",
+        "type": "nominal",
+        "title": "Matched city"
+      },
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State / Territory"
+      },
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall (mm)",
+        "format": ".2f"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 720,
+  "height": 420,
+  "title": "Where Is Rain Tomorrow Most Likely?",
+  "data": {
+    "url": "../data/rainfall_location_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.RainTomorrowRate != null"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "RainTomorrowRate",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rank <= 15"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "height": 3,
+        "opacity": 0.45
+      },
+      "encoding": {
+        "x": {
+          "field": "RainTomorrowRate",
+          "type": "quantitative",
+          "title": "Rain tomorrow rate (%)"
+        },
+        "y": {
+          "field": "Location",
+          "type": "nominal",
+          "sort": {
+            "field": "RainTomorrowRate",
+            "order": "descending"
+          },
+          "title": null
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "title": "State"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 140,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "x": {
+          "field": "RainTomorrowRate",
+          "type": "quantitative",
+          "title": "Rain tomorrow rate (%)"
+        },
+        "y": {
+          "field": "Location",
+          "type": "nominal",
+          "sort": {
+            "field": "RainTomorrowRate",
+            "order": "descending"
+          },
+          "title": null
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "title": "State"
+        },
+        "tooltip": [
+          {
+            "field": "Location",
+            "type": "nominal",
+            "title": "Location"
+          },
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "RainTomorrowRate",
+            "type": "quantitative",
+            "title": "Rain tomorrow rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "title": "Average rainfall (mm)",
+            "format": ".2f"
+          },
+          {
+            "field": "RainyDayRate",
+            "type": "quantitative",
+            "title": "Rainy days (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

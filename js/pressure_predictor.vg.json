@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 520,
+  "height": 320,
+  "title": "Afternoon Pressure and Rain Tomorrow",
+  "data": {
+    "url": "../data/rainfall_predictor_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Factor == 'Pressure3pm'"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Bin",
+      "type": "ordinal",
+      "title": "Afternoon pressure range (hPa)",
+      "sort": ["(979.999, 990.0]", "(990.0, 1000.0]", "(1000.0, 1010.0]", "(1010.0, 1020.0]", "(1020.0, 1030.0]", "(1030.0, 1040.0]"]
+    },
+    "y": {
+      "field": "RainTomorrowRate",
+      "type": "quantitative",
+      "title": "Rain tomorrow rate (%)"
+    },
+    "color": {
+      "field": "RainTomorrowRate",
+      "type": "quantitative",
+      "title": "Rain tomorrow (%)",
+      "scale": {
+        "scheme": "blues"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Factor",
+        "type": "nominal",
+        "title": "Weather factor"
+      },
+      {
+        "field": "Bin",
+        "type": "ordinal",
+        "title": "Pressure range"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "Count",
+        "type": "quantitative",
+        "title": "Records"
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 720,
+  "height": 520,
+  "title": "Monthly Rainfall Pattern Across Australian Weather Locations",
+  "data": {
+    "url": "../data/rainfall_monthly_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.AvgRainfall != null"
+    }
+  ],
+  "mark": {
+    "type": "rect"
+  },
+  "encoding": {
+    "x": {
+      "field": "MonthName",
+      "type": "ordinal",
+      "title": "Month",
+      "sort": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ]
+    },
+    "y": {
+      "field": "Location",
+      "type": "nominal",
+      "title": "Weather location",
+      "sort": "-x"
+    },
+    "color": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Avg rainfall (mm)",
+      "scale": {
+        "scheme": "blues"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Location",
+        "type": "nominal",
+        "title": "Location"
+      },
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "MonthName",
+        "type": "ordinal",
+        "title": "Month"
+      },
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall",
+        "format": ".2f"
+      },
+      {
+        "field": "RainyDayRate",
+        "type": "quantitative",
+        "title": "Rainy day rate (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "RainTomorrowRate",
+        "type": "quantitative",
+        "title": "Rain tomorrow rate (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "view": {
+      "stroke": null
+    }
+  }
+}

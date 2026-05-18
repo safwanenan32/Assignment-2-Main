@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 760,
+  "height": 420,
+  "title": "Final Rainfall Profile: Selected Locations",
+  "data": {
+    "url": "../data/rainfall_profile_cards.csv"
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "row_number"
+        }
+      ]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 8,
+        "opacity": 0.18
+      },
+      "encoding": {
+        "x": {
+          "field": "RainTomorrowRate",
+          "type": "quantitative",
+          "title": "Rain tomorrow rate (%)"
+        },
+        "y": {
+          "field": "Location",
+          "type": "nominal",
+          "sort": {
+            "field": "RainTomorrowRate",
+            "order": "descending"
+          },
+          "title": null
+        },
+        "color": {
+          "field": "RainCategory",
+          "type": "nominal",
+          "title": "Rainfall profile"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4,
+        "height": 16
+      },
+      "encoding": {
+        "x": {
+          "field": "RainTomorrowRate",
+          "type": "quantitative",
+          "title": "Rain tomorrow rate (%)"
+        },
+        "y": {
+          "field": "Location",
+          "type": "nominal",
+          "sort": {
+            "field": "RainTomorrowRate",
+            "order": "descending"
+          },
+          "title": null
+        },
+        "color": {
+          "field": "RainCategory",
+          "type": "nominal",
+          "title": "Rainfall profile"
+        },
+        "tooltip": [
+          {
+            "field": "Location",
+            "type": "nominal",
+            "title": "Location"
+          },
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "RainCategory",
+            "type": "nominal",
+            "title": "Profile"
+          },
+          {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "title": "Average rainfall",
+            "format": ".2f"
+          },
+          {
+            "field": "RainyDayRate",
+            "type": "quantitative",
+            "title": "Rainy days (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "RainTomorrowRate",
+            "type": "quantitative",
+            "title": "Rain tomorrow rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "KeyMessage",
+            "type": "nominal",
+            "title": "Summary"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {
+          "field": "RainTomorrowRate",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Location",
+          "type": "nominal",
+          "sort": {
+            "field": "RainTomorrowRate",
+            "order": "descending"
+          }
+        },
+        "text": {
+          "field": "RainCategory",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "#1f2933"
+        }
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "view": {
+      "stroke": null
+    }
+  }
+}

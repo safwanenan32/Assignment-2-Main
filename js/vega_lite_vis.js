@@ -1,0 +1,23 @@
+var vg_1 = "js/wettest_locations.vg.json";
+var vg_2 = "js/driest_locations.vg.json";
+var vg_3 = "js/monthly_heatmap.vg.json";
+var vg_4 = "js/yearly_trend.vg.json";
+var vg_5 = "js/rainy_days_scatter.vg.json";
+var vg_6 = "js/rain_tomorrow_lollipop.vg.json";
+var vg_7 = "js/humidity_predictor.vg.json";
+var vg_8 = "js/pressure_predictor.vg.json";
+var vg_9 = "js/wind_direction.vg.json";
+var vg_10 = "js/rainfall_profile_cards.vg.json";
+var vg_11 = "js/rainfall_map.vg.json";
+
+vegaEmbed("#wettest_locations", vg_1).catch(console.error);
+vegaEmbed("#driest_locations", vg_2).catch(console.error);
+vegaEmbed("#monthly_heatmap", vg_3).catch(console.error);
+vegaEmbed("#yearly_trend", vg_4).catch(console.error);
+vegaEmbed("#rainy_days_scatter", vg_5).catch(console.error);
+vegaEmbed("#rain_tomorrow_lollipop", vg_6).catch(console.error);
+vegaEmbed("#humidity_predictor", vg_7).catch(console.error);
+vegaEmbed("#pressure_predictor", vg_8).catch(console.error);
+vegaEmbed("#wind_direction", vg_9).catch(console.error);
+vegaEmbed("#rainfall_profile_cards", vg_10).catch(console.error);
+vegaEmbed("#rainfall_map", vg_11).catch(console.error);

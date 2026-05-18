@@ -1,0 +1,50 @@
+Location,MatchedCity,LocationClean,MatchedCityClean,ManualMatchUsed,CityFromAU,city_clean,Latitude,Longitude,State,Population,PopulationProper,MatchStatus
+Adelaide,Adelaide,adelaide,adelaide,False,Adelaide,adelaide,-34.9289,138.6011,South Australia,1345777.0,1295714.0,Matched
+Albany,Albany,albany,albany,False,Albany,albany,-35.0228,117.8814,Western Australia,34205.0,29373.0,Matched
+Albury,Albury,albury,albury,False,Albury,albury,-36.0806,146.9158,New South Wales,47974.0,4804.0,Matched
+AliceSprings,Alice Springs,alicesprings,alicesprings,True,Alice Springs,alicesprings,-23.7,133.8667,Northern Territory,23726.0,23726.0,Matched
+BadgerysCreek,BadgerysCreek,badgeryscreek,badgeryscreek,False,,,,,,,,Needs review
+Ballarat,Ballarat,ballarat,ballarat,False,Ballarat,ballarat,-37.55,143.85,Victoria,105471.0,98543.0,Matched
+Bendigo,Bendigo,bendigo,bendigo,False,Bendigo,bendigo,-36.75,144.2667,Victoria,99122.0,95587.0,Matched
+Brisbane,Brisbane,brisbane,brisbane,False,Brisbane,brisbane,-27.4678,153.0281,Queensland,2514184.0,2360241.0,Matched
+Cairns,Cairns,cairns,cairns,False,Cairns,cairns,-16.9303,145.7703,Queensland,152729.0,146778.0,Matched
+Canberra,Canberra,canberra,canberra,False,Canberra,canberra,-35.2931,149.1269,Australian Capital Territory,426704.0,381488.0,Matched
+Cobar,Cobar,cobar,cobar,False,Cobar,cobar,-31.4997,145.8319,New South Wales,3990.0,3990.0,Matched
+CoffsHarbour,Coffs Harbour,coffsharbour,coffsharbour,True,Coffs Harbour,coffsharbour,-30.3022,153.1189,New South Wales,71822.0,25752.0,Matched
+Dartmoor,Dartmoor,dartmoor,dartmoor,False,,,,,,,,Needs review
+Darwin,Darwin,darwin,darwin,False,Darwin,darwin,-12.4381,130.8411,Northern Territory,136828.0,136828.0,Matched
+GoldCoast,Gold Coast,goldcoast,goldcoast,True,Gold Coast,goldcoast,-28.0167,153.4,Queensland,679127.0,638090.0,Matched
+Hobart,Hobart,hobart,hobart,False,Hobart,hobart,-42.8806,147.325,Tasmania,240342.0,222356.0,Matched
+Katherine,Katherine,katherine,katherine,False,Katherine,katherine,-14.4667,132.2667,Northern Territory,1488.0,1488.0,Matched
+Launceston,Launceston,launceston,launceston,False,Launceston,launceston,-41.4419,147.145,Tasmania,87328.0,87328.0,Matched
+Melbourne,Melbourne,melbourne,melbourne,False,Melbourne,melbourne,-37.8136,144.9631,Victoria,5078193.0,4529500.0,Matched
+MelbourneAirport,Melbourne,melbourneairport,melbourne,True,Melbourne,melbourne,-37.8136,144.9631,Victoria,5078193.0,4529500.0,Matched
+Mildura,Mildura,mildura,mildura,False,Mildura,mildura,-34.1889,142.1583,Victoria,32738.0,32738.0,Matched
+Moree,Moree,moree,moree,False,Moree,moree,-29.465,149.8344,New South Wales,9311.0,9311.0,Matched
+MountGambier,Mount Gambier,mountgambier,mountgambier,True,Mount Gambier,mountgambier,-37.8294,140.7828,South Australia,29639.0,25512.0,Matched
+MountGinini,MountGinini,mountginini,mountginini,False,,,,,,,,Needs review
+Newcastle,Newcastle,newcastle,newcastle,False,Newcastle,newcastle,-32.9167,151.75,New South Wales,322278.0,152984.0,Matched
+Nhil,Nhill,nhil,nhill,True,Nhill,nhill,-36.3333,141.65,Victoria,1872.0,1872.0,Matched
+NorahHead,NorahHead,norahhead,norahhead,False,,,,,,,,Needs review
+NorfolkIsland,NorfolkIsland,norfolkisland,norfolkisland,False,,,,,,,,Needs review
+Nuriootpa,Nuriootpa,nuriootpa,nuriootpa,False,Nuriootpa,nuriootpa,-34.4667,138.9833,South Australia,6314.0,6314.0,Matched
+PearceRAAF,Perth,pearceraaf,perth,True,Perth,perth,-31.9522,115.8589,Western Australia,2059484.0,2039200.0,Matched
+Penrith,Penrith,penrith,penrith,False,Penrith,penrith,-33.7511,150.6942,New South Wales,13295.0,13295.0,Matched
+Perth,Perth,perth,perth,False,Perth,perth,-31.9522,115.8589,Western Australia,2059484.0,2039200.0,Matched
+PerthAirport,Perth,perthairport,perth,True,Perth,perth,-31.9522,115.8589,Western Australia,2059484.0,2039200.0,Matched
+Portland,Portland,portland,portland,False,Portland,portland,-38.3333,141.6,Victoria,10900.0,9712.0,Matched
+Richmond,Richmond,richmond,richmond,False,Richmond,richmond,-33.5983,150.7511,New South Wales,5482.0,5482.0,Matched
+Sale,Sale,sale,sale,False,Sale,sale,-38.1,147.0667,Victoria,15135.0,13673.0,Matched
+SalmonGums,SalmonGums,salmongums,salmongums,False,,,,,,,,Needs review
+Sydney,Sydney,sydney,sydney,False,Sydney,sydney,-33.865,151.2094,New South Wales,5312163.0,4840600.0,Matched
+SydneyAirport,Sydney,sydneyairport,sydney,True,Sydney,sydney,-33.865,151.2094,New South Wales,5312163.0,4840600.0,Matched
+Townsville,Townsville,townsville,townsville,False,Townsville,townsville,-19.2564,146.8183,Queensland,180820.0,178649.0,Matched
+Tuggeranong,Canberra,tuggeranong,canberra,True,Canberra,canberra,-35.2931,149.1269,Australian Capital Territory,426704.0,381488.0,Matched
+Uluru,Yulara,uluru,yulara,True,Yulara,yulara,-25.2406,130.9889,Northern Territory,1099.0,1099.0,Matched
+WaggaWagga,Wagga Wagga,waggawagga,waggawagga,True,Wagga Wagga,waggawagga,-35.1189,147.3689,New South Wales,56442.0,54411.0,Matched
+Walpole,Walpole,walpole,walpole,False,,,,,,,,Needs review
+Watsonia,Melbourne,watsonia,melbourne,True,Melbourne,melbourne,-37.8136,144.9631,Victoria,5078193.0,4529500.0,Matched
+Williamtown,Newcastle,williamtown,newcastle,True,Newcastle,newcastle,-32.9167,151.75,New South Wales,322278.0,152984.0,Matched
+Witchcliffe,Witchcliffe,witchcliffe,witchcliffe,False,,,,,,,,Needs review
+Wollongong,Wollongong,wollongong,wollongong,False,Wollongong,wollongong,-34.4331,150.8831,New South Wales,302739.0,289236.0,Matched
+Woomera,Woomera,woomera,woomera,False,,,,,,,,Needs review
