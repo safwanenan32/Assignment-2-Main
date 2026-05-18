@@ -4,7 +4,7 @@
   "height": 400,
   "title": "Rainy Days vs Average Rainfall",
   "data": {
-    "url": "../data/rainfall_location_summary.csv"
+    "url": "data/rainfall_location_summary.csv"
   },
   "transform": [
     {
