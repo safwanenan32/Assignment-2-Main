@@ -4,7 +4,7 @@
   "height": 420,
   "title": "Final Rainfall Profile: Selected Locations",
   "data": {
-    "url": "../data/rainfall_profile_cards.csv"
+    "url": "data/rainfall_profile_cards.csv"
   },
   "transform": [
     {
