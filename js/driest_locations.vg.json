@@ -4,7 +4,7 @@
   "height": 300,
   "title": "Driest Australian Weather Locations",
   "data": {
-    "url": "../data/rainfall_location_summary.csv"
+    "url": "data/rainfall_location_summary.csv"
   },
   "transform": [
   {
