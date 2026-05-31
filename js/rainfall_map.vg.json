@@ -12,7 +12,7 @@
   "layer": [
     {
       "data": {
-        "url": "data/australia_states.topojson",
+        "url": "https://raw.githubusercontent.com/safwanenan32/Assignment-2-Main/refs/heads/main/data/australia_states.topojson",
         "format": {
           "type": "topojson",
           "feature": "GCCSA_2021_AUST_GDA2020"
@@ -41,7 +41,7 @@
     },
     {
       "data": {
-        "url": "../data/state_labels.csv"
+        "url": "https://raw.githubusercontent.com/safwanenan32/Assignment-2-Main/refs/heads/main/data/state_labels.csv"
       },
       "mark": {
         "type": "text",
@@ -67,7 +67,7 @@
     },
     {
       "data": {
-        "url": "../data/rainfall_location_summary.csv"
+        "url": "https://raw.githubusercontent.com/safwanenan32/Assignment-2-Main/refs/heads/main/data/rainfall_location_summary.csv"
       },
       "transform": [
         {
