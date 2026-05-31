@@ -1,0 +1,196 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Rain Compass Rose",
+    "subtitle": "Wind directions are arranged like a compass. Longer petals show directions more often followed by rain tomorrow.",
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d"
+  },
+  "width": 620,
+  "height": 620,
+  "data": {
+    "url": "data/rainfall_wind_direction_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.WindGustDir != null && datum.WindGustDir != ''"
+    },
+    {
+      "calculate": "datum.RainTomorrowRate > 1 ? datum.RainTomorrowRate : datum.RainTomorrowRate * 100",
+      "as": "RainTomorrowPct"
+    },
+    {
+      "calculate": "datum.WindGustDir == 'N' ? 1 : datum.WindGustDir == 'NNE' ? 2 : datum.WindGustDir == 'NE' ? 3 : datum.WindGustDir == 'ENE' ? 4 : datum.WindGustDir == 'E' ? 5 : datum.WindGustDir == 'ESE' ? 6 : datum.WindGustDir == 'SE' ? 7 : datum.WindGustDir == 'SSE' ? 8 : datum.WindGustDir == 'S' ? 9 : datum.WindGustDir == 'SSW' ? 10 : datum.WindGustDir == 'SW' ? 11 : datum.WindGustDir == 'WSW' ? 12 : datum.WindGustDir == 'W' ? 13 : datum.WindGustDir == 'WNW' ? 14 : datum.WindGustDir == 'NW' ? 15 : datum.WindGustDir == 'NNW' ? 16 : 17",
+      "as": "DirectionOrder"
+    },
+    {
+      "calculate": "1",
+      "as": "EqualSlice"
+    },
+    {
+      "calculate": "format(datum.RainTomorrowPct, '.1f') + '%'",
+      "as": "RainTomorrowLabel"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 70,
+        "stroke": "#ffffff",
+        "strokeWidth": 2,
+        "cornerRadius": 5
+      },
+      "encoding": {
+        "theta": {
+          "field": "EqualSlice",
+          "type": "quantitative",
+          "stack": true,
+          "sort": {
+            "field": "DirectionOrder",
+            "order": "ascending"
+          }
+        },
+        "radius": {
+          "field": "RainTomorrowPct",
+          "type": "quantitative",
+          "title": "Rain tomorrow (%)",
+          "scale": {
+            "rangeMin": 95,
+            "rangeMax": 285
+          }
+        },
+        "color": {
+          "field": "AvgRainfall",
+          "type": "quantitative",
+          "title": "Average rainfall (mm)",
+          "scale": {
+            "scheme": "blues"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "WindGustDir",
+            "type": "nominal",
+            "title": "Wind direction"
+          },
+          {
+            "field": "RainTomorrowPct",
+            "type": "quantitative",
+            "title": "Rain tomorrow (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "title": "Average rainfall (mm)",
+            "format": ".2f"
+          },
+          {
+            "field": "Count",
+            "type": "quantitative",
+            "title": "Records",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 68,
+        "outerRadius": 70,
+        "color": "#102a43"
+      },
+      "encoding": {
+        "theta": {
+          "field": "EqualSlice",
+          "type": "quantitative",
+          "stack": true,
+          "sort": {
+            "field": "DirectionOrder",
+            "order": "ascending"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 315,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#243b53"
+      },
+      "encoding": {
+        "theta": {
+          "field": "EqualSlice",
+          "type": "quantitative",
+          "stack": true,
+          "sort": {
+            "field": "DirectionOrder",
+            "order": "ascending"
+          }
+        },
+        "text": {
+          "field": "WindGustDir",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "color": "#102a43"
+      },
+      "encoding": {
+        "x": {
+          "value": 310
+        },
+        "y": {
+          "value": 290
+        },
+        "text": {
+          "value": "RAIN"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 13,
+        "color": "#52606d"
+      },
+      "encoding": {
+        "x": {
+          "value": 310
+        },
+        "y": {
+          "value": 315
+        },
+        "text": {
+          "value": "compass"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "orient": "right",
+      "titleFontSize": 12,
+      "labelFontSize": 11
+    }
+  }
+}

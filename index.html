@@ -10,9 +10,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -25,27 +25,44 @@
       <p class="eyebrow">Australian Weather Data Visualisation</p>
       <h1>Australia’s Rainfall Divide</h1>
       <p class="hero-text">
-        Rain does not fall evenly across Australia. This visual story explores where rainfall is strongest,
-        how rainfall changes across seasons, and which weather conditions are linked with rain the next day.
+        Rainfall is one of the clearest ways to see how different Australia’s environments can be.
+        A single national average hides a much more uneven story: coastal cities, tropical regions,
+        inland towns, and southern capitals experience rain in very different ways. This visual story
+        uses historical Australian weather observations and city location data to explore where rain
+        falls, when it arrives, and which weather conditions are commonly linked with rain the next day.
       </p>
     </section>
 
     <!-- MAP SECTION -->
     <section class="section">
-      <h2>1. Where Does Rain Fall Across Australia?</h2>
+      <h2>1. Rainfall Begins With Geography</h2>
       <p>
-        The map shows weather locations across Australia using matched city coordinates. Larger circles represent
-        higher average rainfall, while darker blue circles show locations where rain tomorrow was more common.
+        The first pattern is spatial. This map places Australian weather locations using matched city
+        coordinates, then compares their average rainfall. Larger circles indicate locations with higher
+        average rainfall, while darker blue tones show stronger rainfall patterns. The purpose of this
+        map is not to predict today’s weather, but to show how strongly rainfall depends on where a
+        place is located.
+      </p>
+      <p>
+        This immediately shows why rainfall should not be treated as one national story. A person living
+        near a wetter coastal or tropical location may experience rain very differently from someone in
+        an inland or dry-region location.
       </p>
       <div id="rainfall_map" class="vis"></div>
     </section>
 
     <!-- WETTEST AND DRIEST SECTION -->
     <section class="section">
-      <h2>2. The Wettest and Driest Locations Show a Clear Divide</h2>
+      <h2>2. The Extremes Reveal the Divide</h2>
       <p>
-        Australia’s rainfall pattern is highly uneven. Some coastal and northern locations receive much more
-        rainfall than inland and dry-region locations.
+        After seeing the geography, the next question is simple: which locations sit at the wet and dry
+        ends of the rainfall spectrum? The charts below separate the wettest and driest weather
+        locations, making the contrast easier to compare than on the map alone.
+      </p>
+      <p>
+        This section is important because it turns the map into a clearer ranking story. It shows that
+        Australia’s rainfall divide is not a small difference between similar places, but a large gap
+        between locations with very different rainfall exposure.
       </p>
 
       <div class="grid-two">
@@ -63,50 +80,109 @@
 
     <!-- MONTHLY HEATMAP -->
     <section class="section">
-      <h2>3. Rainfall Changes by Month</h2>
+      <h2>3. Rainfall Is Seasonal, Not Just Regional</h2>
       <p>
-        Rainfall is not only different by place. It also changes across the year. Darker blue cells show months
-        with higher average rainfall, helping reveal seasonal rainfall patterns.
+        Location explains part of the story, but timing matters as well. This heatmap shows how average
+        rainfall changes across the months of the year. Darker cells indicate wetter months, allowing
+        seasonal patterns to be compared across locations.
+      </p>
+      <p>
+        This helps answer a more useful question for everyday Australians: not just “where does it rain?”,
+        but “when does rain usually arrive?” Some places show a concentrated wet season, while others
+        have rainfall spread more evenly across the year.
       </p>
       <div id="monthly_heatmap" class="vis"></div>
     </section>
 
+    <!-- MONTHLY SLIDER -->
+    <section class="section">
+      <h2>4. Explore the Rainfall Calendar Month by Month</h2>
+      <p>
+        The heatmap shows the full year at once, but it can still be hard to follow how rainfall shifts
+        from month to month. This interactive explorer lets the viewer move through the calendar using
+        a slider. Larger bubbles represent higher average rainfall, while darker bubbles show months
+        where rain occurred on a higher percentage of days.
+      </p>
+      <p>
+        The slider adds interaction with a clear purpose: it lets the audience compare the same locations
+        across different months without changing pages or hiding major sections of the story.
+      </p>
+      <div id="monthly_rainfall_slider" class="vis"></div>
+    </section>
+    <section class="section">
+  <h2>Rainfall spread differs between states</h2>
+  <p>
+    Averages can hide how uneven rainfall is within a state. This box plot shows
+    the spread of monthly rainfall values across weather locations in each state
+    or territory. A taller box means rainfall varies more widely, while points
+    beyond the whiskers highlight unusually wet monthly patterns.
+  </p>
+  <p>
+    This adds another layer to the story: rainfall is not only different between
+    states, but also uneven within them. Some states contain locations with very
+    different rainfall behaviour, so a single state average can be misleading.
+  </p>
+  <div id="state_rainfall_boxplot" class="vis"></div>
+</section>
+
     <!-- YEARLY TREND -->
     <section class="section">
-      <h2>4. Rainfall Varies Over Time</h2>
+      <h2>5. Rainfall Also Changes From Year to Year</h2>
       <p>
-        This chart shows how average rainfall varied across the recorded years. It should be read as rainfall
-        variation within this dataset, not as complete proof of long-term climate change.
+        Seasonal patterns repeat across the calendar, but rainfall also varies between years. This chart
+        summarises average rainfall across the recorded period and shows how rainfall levels changed
+        over time in the dataset.
+      </p>
+      <p>
+        This should be interpreted carefully. The chart shows variation within the available historical
+        records, not a complete climate-change conclusion. Its role in the story is to show that rainfall
+        is variable across time as well as across place.
       </p>
       <div id="yearly_trend" class="vis"></div>
     </section>
 
     <!-- RAINY DAYS SCATTER -->
     <section class="section">
-      <h2>5. Rainy Days Are Not Always Heavy Rain</h2>
+      <h2>6. Frequent Rain and Heavy Rain Are Not the Same Thing</h2>
       <p>
-        This scatterplot compares how often rain occurs with how much rain falls on average. Larger circles show
-        locations with more heavy rain days.
+        A location can have many rainy days without always receiving large rainfall amounts. Another
+        location may have fewer rainy days but experience heavier rainfall when rain does occur. This
+        visualisation compares rainfall frequency with average rainfall amount, while larger circles
+        highlight locations with more heavy-rain days.
+      </p>
+      <p>
+        This distinction is useful because “wet” can mean different things. For some places, wetness
+        means regular light rain. For others, it may mean less frequent but heavier rainfall events.
       </p>
       <div id="rainy_days_scatter" class="vis"></div>
     </section>
 
     <!-- RAIN TOMORROW -->
     <section class="section">
-      <h2>6. Where Is Rain Tomorrow Most Likely?</h2>
+      <h2>7. Some Locations Are More Often Followed by Rain Tomorrow</h2>
       <p>
-        This chart ranks the locations where rain was most likely to occur the next day in the historical dataset.
-        It shows likelihood based on past records, not a live forecast.
+        RainTomorrow records whether rain occurred the day after a weather observation. This ranking
+        compares locations by the historical percentage of days that were followed by rain.
+      </p>
+      <p>
+        This is not a live forecast. Instead, it gives a historical view of how often rain followed the
+        recorded conditions at each location. It helps shift the story from “where rain falls” to “where
+        rain is more likely to continue or arrive next.”
       </p>
       <div id="rain_tomorrow_lollipop" class="vis"></div>
     </section>
 
     <!-- WEATHER CONDITION SECTION -->
     <section class="section">
-      <h2>7. What Weather Conditions Are Linked With Rain Tomorrow?</h2>
+      <h2>8. The Weather Signals Before Rain</h2>
       <p>
-        Humidity and pressure are useful weather signals. They do not prove direct causation by themselves,
-        but they show conditions commonly associated with rain the next day.
+        Rain is rarely linked to one condition alone. Humidity and pressure are two useful signals because
+        they describe the state of the air before rainfall. Higher humidity often means more moisture is
+        available, while pressure changes can be associated with changing weather systems.
+      </p>
+      <p>
+        These charts should be read as relationships, not proof of direct causation. They show conditions
+        that were commonly associated with rain the next day in the historical data.
       </p>
 
       <div class="grid-two">
@@ -122,23 +198,50 @@
       </div>
     </section>
 
+    <!-- RAIN COMPASS ROSE -->
+    <section class="section">
+      <h2>9. Rain Does Not Arrive Equally From Every Direction</h2>
+      <p>
+        Wind direction adds another layer to the rainfall story. The compass-style visualisation shows
+        how wind gust direction is associated with rain the next day. Each spoke points toward a wind
+        direction. Longer spokes indicate directions that were more often followed by rain, while darker
+        blue marks show directions linked with higher average rainfall.
+      </p>
+      <p>
+        This gives the viewer a more visual way to think about incoming weather patterns. Instead of
+        reading wind direction as a list of labels, the compass layout connects the data to the physical
+        idea of direction.
+      </p>
+      <div id="rain_compass_rose" class="vis"></div>
+    </section>
+
     <!-- WIND SECTION -->
     <section class="section">
-      <h2>8. Wind Direction and Rain Tomorrow</h2>
+      <h2>10. Comparing Wind Directions More Directly</h2>
       <p>
-        Wind direction can reveal how incoming weather patterns are associated with rain the next day.
-        The chart compares rain tomorrow rates across different wind gust directions.
+        The compass rose gives a visual overview, while this chart provides a more direct comparison
+        across wind gust directions. Together, the two views show the same theme in different ways:
+        wind direction can be part of the conditions associated with rain tomorrow.
+      </p>
+      <p>
+        This section supports the broader message that rainfall is not only about location and season.
+        Short-term weather conditions also shape whether rain is likely to follow.
       </p>
       <div id="wind_direction" class="vis"></div>
     </section>
 
     <!-- FINAL PROFILE -->
     <section class="section conclusion-section">
-      <h2>9. Final Rainfall Profile</h2>
+      <h2>11. Final Rainfall Profiles</h2>
       <p>
-        The final view groups selected locations into simple rainfall profiles based on rainfall frequency,
-        rainfall amount, and rain tomorrow rate. This summarises the main story: rainfall risk differs strongly
-        depending on where you are in Australia.
+        The final view brings the story together by grouping selected locations into simple rainfall
+        profiles. These profiles combine rainfall frequency, rainfall amount, and rain tomorrow rate,
+        turning several measurements into an easier summary for the viewer.
+      </p>
+      <p>
+        The main conclusion is clear: Australia’s rainfall risk depends strongly on place, season, and
+        weather conditions. A national rainfall average is useful as a broad reference, but it hides the
+        local differences that people actually experience.
       </p>
       <div id="rainfall_profile_cards" class="vis"></div>
     </section>
@@ -148,7 +251,8 @@
       <p><strong>Created by:</strong> Abyead Safwan Enan</p>
       <p><strong>Date:</strong> May 2026</p>
       <p><strong>Data sources:</strong> weatherAUS dataset and Australian city coordinate/population dataset.</p>
-      <p><strong>Note:</strong> Some weather station names were matched to nearby city names to provide geographic context for mapping.</p>
+      <p><strong>Data note:</strong> The raw weather dataset was summarised into smaller derived files so the webpage loads efficiently. Some weather station names were matched to nearby city names to provide geographic context for mapping.</p>
+      <p><strong>Interpretation note:</strong> RainTomorrow values describe historical outcomes in the dataset. They should not be read as live weather forecasts.</p>
       <p><strong>AI acknowledgement:</strong> Generative AI was used to support planning, wording, code debugging, and visualisation structuring.</p>
     </footer>
 

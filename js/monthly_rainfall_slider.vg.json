@@ -1,0 +1,287 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Monthly Rainfall Explorer",
+    "subtitle": "Use the slider to see how rainfall shifts across Australian locations month by month.",
+    "anchor": "start",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "subtitleColor": "#52606d"
+  },
+  "width": 760,
+  "height": 540,
+  "data": {
+    "url": "data/rainfall_monthly_summary.csv"
+  },
+  "params": [
+    {
+      "name": "selectedMonth",
+      "value": 1,
+      "bind": {
+        "input": "range",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "name": "Month: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "+datum.Month == selectedMonth"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "Index"
+        }
+      ],
+      "sort": [
+        {
+          "field": "State",
+          "order": "ascending"
+        },
+        {
+          "field": "Location",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum.Index - 1) % 7",
+      "as": "GridCol"
+    },
+    {
+      "calculate": "floor((datum.Index - 1) / 7)",
+      "as": "GridRow"
+    },
+    {
+      "calculate": "datum.GridCol * 105 + 65",
+      "as": "X"
+    },
+    {
+      "calculate": "datum.GridRow * 82 + 70",
+      "as": "Y"
+    },
+    {
+      "calculate": "datum.Month == 1 ? 'January' : datum.Month == 2 ? 'February' : datum.Month == 3 ? 'March' : datum.Month == 4 ? 'April' : datum.Month == 5 ? 'May' : datum.Month == 6 ? 'June' : datum.Month == 7 ? 'July' : datum.Month == 8 ? 'August' : datum.Month == 9 ? 'September' : datum.Month == 10 ? 'October' : datum.Month == 11 ? 'November' : 'December'",
+      "as": "SelectedMonthName"
+    },
+    {
+      "calculate": "format(datum.AvgRainfall, '.1f') + ' mm'",
+      "as": "RainfallLabel"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 4300,
+        "fill": "#f8fbff",
+        "stroke": "#d9e2ec",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 760]
+          }
+        },
+        "y": {
+          "field": "Y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 540]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "stroke": "#ffffff",
+        "strokeWidth": 2,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 760]
+          }
+        },
+        "y": {
+          "field": "Y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 540]
+          }
+        },
+        "size": {
+          "field": "AvgRainfall",
+          "type": "quantitative",
+          "title": "Average rainfall (mm)",
+          "scale": {
+            "range": [70, 2500]
+          }
+        },
+        "color": {
+          "field": "RainyDayRate",
+          "type": "quantitative",
+          "title": "Rainy day rate (%)",
+          "scale": {
+            "scheme": "blues"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Location",
+            "type": "nominal"
+          },
+          {
+            "field": "State",
+            "type": "nominal"
+          },
+          {
+            "field": "SelectedMonthName",
+            "type": "nominal",
+            "title": "Month"
+          },
+          {
+            "field": "AvgRainfall",
+            "type": "quantitative",
+            "title": "Average rainfall (mm)",
+            "format": ".2f"
+          },
+          {
+            "field": "RainyDayRate",
+            "type": "quantitative",
+            "title": "Rainy day rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "RainTomorrowRate",
+            "type": "quantitative",
+            "title": "Rain tomorrow rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 31,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#1f2933"
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 760]
+          }
+        },
+        "y": {
+          "field": "Y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 540]
+          }
+        },
+        "text": {
+          "field": "Location",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 45,
+        "fontSize": 9,
+        "color": "#52606d"
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 760]
+          }
+        },
+        "y": {
+          "field": "Y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [0, 540]
+          }
+        },
+        "text": {
+          "field": "RainfallLabel",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "mean",
+              "field": "AvgRainfall",
+              "as": "NationalMonthlyRainfall"
+            }
+          ],
+          "groupby": [
+            "SelectedMonthName"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "color": "#102a43"
+      },
+      "encoding": {
+        "x": {
+          "value": 15
+        },
+        "y": {
+          "value": 25
+        },
+        "text": {
+          "field": "SelectedMonthName",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "orient": "right",
+      "titleFontSize": 12,
+      "labelFontSize": 11
+    }
+  }
+}

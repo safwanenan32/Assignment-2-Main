@@ -21,3 +21,6 @@ vegaEmbed("#pressure_predictor", vg_8).catch(console.error);
 vegaEmbed("#wind_direction", vg_9).catch(console.error);
 vegaEmbed("#rainfall_profile_cards", vg_10).catch(console.error);
 vegaEmbed("#rainfall_map", vg_11).catch(console.error);
+vegaEmbed("#rain_compass_rose", "js/rain_compass_rose.vg.json").catch(console.error);
+vegaEmbed("#monthly_rainfall_slider", "js/monthly_rainfall_slider.vg.json").catch(console.error);
+vegaEmbed("#state_rainfall_boxplot", "js/state_rainfall_boxplot.vg.json").catch(console.error);

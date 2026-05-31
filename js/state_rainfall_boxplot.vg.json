@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "How Spread Out Is Rainfall Across States?",
+    "subtitle": "Each box shows the spread of average monthly rainfall values for weather locations in each state.",
+    "anchor": "start",
+    "fontSize": 22,
+    "subtitleFontSize": 13,
+    "subtitleColor": "#52606d"
+  },
+  "width": 760,
+  "height": 430,
+  "data": {
+    "url": "data/rainfall_monthly_summary.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.State != null && datum.State != '' && datum.AvgRainfall != null"
+    }
+  ],
+  "mark": {
+    "type": "boxplot",
+    "extent": 1.5,
+    "size": 35,
+    "outliers": true
+  },
+  "encoding": {
+    "x": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State / territory",
+      "sort": "-y",
+      "axis": {
+        "labelAngle": -25,
+        "labelFontSize": 11,
+        "titleFontSize": 12
+      }
+    },
+    "y": {
+      "field": "AvgRainfall",
+      "type": "quantitative",
+      "title": "Average monthly rainfall (mm)",
+      "axis": {
+        "grid": true,
+        "titleFontSize": 12
+      }
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "scheme": "tableau20"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "State",
+        "type": "nominal"
+      },
+      {
+        "field": "AvgRainfall",
+        "type": "quantitative",
+        "title": "Average rainfall (mm)",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domain": false,
+      "ticks": false
+    }
+  }
+}
