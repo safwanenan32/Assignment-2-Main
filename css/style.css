@@ -1,3 +1,52 @@
+/* =========================================================
+   Australia’s Rainfall Divide — HD-focused visual design
+   Goals:
+   - Strong visual hierarchy
+   - Clear storytelling sections
+   - Consistent rainfall-themed colour system
+   - Good white space and figure-ground contrast
+   - Small-laptop responsive layout
+   ========================================================= */
+
+/* ---------- DESIGN TOKENS ---------- */
+
+:root {
+  --ink: #102033;
+  --muted: #4f6575;
+  --soft-muted: #6b7f8d;
+
+  --blue-900: #00324f;
+  --blue-800: #00496f;
+  --blue-700: #006b9a;
+  --blue-600: #008fc4;
+  --blue-500: #00a8d8;
+  --blue-200: #dff4fb;
+  --blue-100: #eef9fd;
+
+  --aqua: #73d2de;
+  --sky: #bceeff;
+  --rain: #2f80ed;
+  --amber: #f4a261;
+
+  --paper: rgba(255, 255, 255, 0.94);
+  --paper-solid: #ffffff;
+  --page-bg: #eef6fa;
+
+  --line: rgba(128, 173, 196, 0.38);
+  --line-strong: rgba(0, 106, 154, 0.22);
+
+  --shadow-soft: 0 18px 45px rgba(11, 48, 72, 0.10);
+  --shadow-strong: 0 28px 70px rgba(5, 48, 78, 0.22);
+
+  --radius-xl: 34px;
+  --radius-lg: 26px;
+  --radius-md: 18px;
+
+  --content-width: 1180px;
+}
+
+/* ---------- GLOBAL RESET ---------- */
+
 * {
   box-sizing: border-box;
 }
@@ -9,232 +58,393 @@ html {
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(0, 166, 214, 0.25), transparent 28%),
-    radial-gradient(circle at top right, rgba(0, 84, 130, 0.24), transparent 30%),
-    linear-gradient(180deg, #eaf5fa 0%, #f5f9fc 45%, #eef6fa 100%);
-  color: #102033;
+    radial-gradient(circle at 8% 4%, rgba(0, 168, 216, 0.24), transparent 28%),
+    radial-gradient(circle at 92% 2%, rgba(0, 73, 111, 0.18), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(115, 210, 222, 0.16), transparent 34%),
+    linear-gradient(180deg, #eaf6fb 0%, #f7fbfd 42%, #edf6fa 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 74, 111, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 74, 111, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.75), transparent 80%);
 }
 
 .page {
-  max-width: 1180px;
+  width: min(var(--content-width), calc(100% - 42px));
   margin: 0 auto;
-  padding: 36px;
+  padding: 38px 0 52px;
 }
 
-/* HERO */
+/* ---------- HERO SECTION ---------- */
 
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 76px 60px;
+  padding: clamp(48px, 7vw, 86px);
   margin-bottom: 36px;
-  border-radius: 34px;
+  border-radius: var(--radius-xl);
   color: white;
   background:
-    linear-gradient(135deg, rgba(0, 42, 68, 0.94), rgba(0, 115, 165, 0.88)),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 24px 60px rgba(0, 55, 90, 0.26);
+    radial-gradient(circle at 88% 16%, rgba(255, 255, 255, 0.18), transparent 22%),
+    radial-gradient(circle at 18% 86%, rgba(115, 210, 222, 0.22), transparent 26%),
+    linear-gradient(135deg, #032236 0%, #00486d 48%, #0079a8 100%);
+  box-shadow: var(--shadow-strong);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  right: -120px;
-  top: -120px;
-  width: 330px;
-  height: 330px;
+  width: 520px;
+  height: 520px;
+  right: -220px;
+  top: -210px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
+  background:
+    repeating-radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.14) 0,
+      rgba(255, 255, 255, 0.14) 2px,
+      transparent 2px,
+      transparent 22px
+    );
 }
 
 .hero::after {
-  content: "RAIN • SEASON • PLACE";
+  content: "PLACE  •  SEASON  •  RAIN TOMORROW";
   position: absolute;
-  right: 42px;
-  bottom: 32px;
+  right: 44px;
+  bottom: 34px;
   font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.55);
+  font-weight: 900;
+  letter-spacing: 2.6px;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .eyebrow {
-  display: inline-block;
-  margin: 0 0 18px 0;
-  padding: 9px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 20px 0;
+  padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-  color: #dff6ff;
-  font-size: 13px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #e6faff;
+  font-size: 12px;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 0 5px rgba(188, 238, 255, 0.16);
 }
 
 .hero h1 {
-  max-width: 850px;
+  max-width: 900px;
   margin: 0;
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
-  font-size: 70px;
-  line-height: 0.95;
-  letter-spacing: -2.6px;
-  font-weight: 800;
+  font-size: clamp(44px, 7vw, 78px);
+  line-height: 0.94;
+  letter-spacing: -3px;
+  font-weight: 900;
 }
 
 .hero-text {
-  max-width: 850px;
-  margin-top: 26px;
-  font-size: 21px;
-  line-height: 1.7;
+  max-width: 880px;
+  margin: 28px 0 0;
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.72;
   color: #edfaff;
 }
 
-/* SECTION CARDS */
+/* ---------- SECTION CARDS ---------- */
 
 .section {
-  background: rgba(255, 255, 255, 0.96);
-  padding: 40px;
-  border-radius: 30px;
+  position: relative;
+  background: var(--paper);
+  backdrop-filter: blur(8px);
+  padding: clamp(28px, 4.2vw, 46px);
+  border-radius: var(--radius-xl);
   margin-bottom: 34px;
-  border: 1px solid rgba(153, 194, 214, 0.45);
-  box-shadow: 0 18px 45px rgba(15, 49, 71, 0.11);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 168, 216, 0.06), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 36%);
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section h2 {
-  margin: 0 0 16px 0;
+  max-width: 1000px;
+  margin: 0 0 18px 0;
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
-  font-size: 33px;
-  line-height: 1.15;
-  font-weight: 800;
-  color: #003d5f;
-  letter-spacing: -1px;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.12;
+  font-weight: 900;
+  color: var(--blue-900);
+  letter-spacing: -1.15px;
 }
 
 .section h2::before {
   content: "";
   display: inline-block;
-  width: 9px;
-  height: 30px;
-  margin-right: 12px;
+  width: 10px;
+  height: 32px;
+  margin-right: 13px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #00a8d8, #005c99);
-  vertical-align: -5px;
+  background: linear-gradient(180deg, var(--blue-500), var(--blue-800));
+  vertical-align: -6px;
+  box-shadow: 0 8px 18px rgba(0, 126, 177, 0.28);
 }
 
 .section h3 {
-  margin: 8px 0 12px 0;
+  margin: 8px 0 14px 0;
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: #0a638a;
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.2;
+  font-weight: 850;
+  color: var(--blue-700);
 }
 
 .section p {
-  max-width: 1000px;
-  margin: 0 0 22px 0;
+  max-width: 980px;
+  margin: 0 0 20px 0;
   font-size: 17px;
   line-height: 1.78;
-  color: #3e5363;
+  color: var(--muted);
 }
 
-/* EMPHASIS TEXT */
+.section p + p {
+  margin-top: -4px;
+}
 
-.insight {
-  padding: 16px 20px;
-  margin: 20px 0 10px 0;
-  border-left: 5px solid #008ec4;
-  background: #eef9fd;
-  border-radius: 14px;
+/* ---------- STORY GUIDE / ROADMAP ---------- */
+
+.guide-section {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96), rgba(232, 249, 255, 0.96));
+}
+
+.guide-section h2::before {
+  background: linear-gradient(180deg, #73d2de, #008fc4);
+}
+
+/* ---------- INSIGHT / ANNOTATION BOXES ---------- */
+
+.insight,
+.insight-box {
+  position: relative;
+  margin: 22px 0 18px 0;
+  padding: 17px 20px 17px 54px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, #eef9fd, #ffffff);
   color: #244557;
   font-size: 16px;
   line-height: 1.65;
+  border: 1px solid rgba(0, 142, 196, 0.20);
+  box-shadow: 0 10px 26px rgba(0, 86, 126, 0.08);
 }
 
-.insight strong {
-  color: #00577d;
+.insight::before,
+.insight-box::before {
+  content: "↳";
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue-600);
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
 }
 
-/* VISUALISATION BOX */
+.insight strong,
+.insight-box strong {
+  color: var(--blue-800);
+}
+
+/* ---------- VISUALISATION BOX ---------- */
 
 .vis {
   width: 100%;
   max-width: 100%;
-  margin-top: 24px;
-  padding: 16px;
-  border-radius: 22px;
-  background: linear-gradient(180deg, #ffffff, #f8fcff);
-  border: 1px solid rgba(184, 209, 222, 0.75);
+  margin-top: 26px;
+  padding: 20px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
+  border: 1px solid rgba(184, 209, 222, 0.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 12px 28px rgba(15, 49, 71, 0.07);
   overflow-x: hidden;
 }
 
-.vega-embed,
-.vega-embed canvas,
-.vega-embed svg {
+.vega-embed {
   max-width: 100%;
 }
 
-/* GRID SECTIONS */
+.vega-embed canvas,
+.vega-embed svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove the small Vega action menu unless hovered,
+   keeps the page cleaner but still accessible. */
+.vega-actions {
+  opacity: 0.28;
+  transition: opacity 0.2s ease;
+  font-size: 12px;
+}
+
+.vega-embed:hover .vega-actions {
+  opacity: 1;
+}
+
+/* ---------- TWO-COLUMN SECTIONS ---------- */
 
 .grid-two {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 26px;
   align-items: start;
+  margin-top: 22px;
 }
 
 .grid-two > div {
   min-width: 0;
-  background: linear-gradient(180deg, #f7fbfd, #ffffff);
-  border-radius: 22px;
-  padding: 20px;
+  background:
+    linear-gradient(180deg, #f7fbfd 0%, #ffffff 100%);
+  border-radius: 24px;
+  padding: 24px;
   border: 1px solid rgba(183, 212, 226, 0.75);
+  box-shadow: 0 12px 28px rgba(15, 49, 71, 0.065);
 }
 
-/* CONCLUSION */
+/* ---------- CONCLUSION / LIMITATIONS ---------- */
 
 .conclusion-section {
   background:
-    linear-gradient(135deg, rgba(229, 247, 255, 0.98), rgba(255, 255, 255, 0.98));
+    radial-gradient(circle at 85% 18%, rgba(0, 168, 216, 0.14), transparent 26%),
+    linear-gradient(135deg, rgba(230, 248, 255, 0.98), rgba(255, 255, 255, 0.98));
   border: 1px solid rgba(0, 126, 177, 0.25);
 }
 
-/* FOOTER */
+.conclusion-section h2::before {
+  background: linear-gradient(180deg, var(--amber), var(--blue-700));
+}
+
+/* Optional class if you add a limitations section */
+.limitations-section {
+  background:
+    linear-gradient(135deg, rgba(255, 251, 235, 0.92), rgba(255, 255, 255, 0.96));
+  border: 1px solid rgba(244, 162, 97, 0.28);
+}
+
+.limitations-section h2::before {
+  background: linear-gradient(180deg, #f4a261, #d97706);
+}
+
+/* ---------- FOOTER ---------- */
 
 footer {
-  margin: 36px 0 20px 0;
-  padding: 32px 36px;
-  background: linear-gradient(135deg, #04283d, #064a6d);
+  margin: 38px 0 18px 0;
+  padding: 34px 38px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(115, 210, 222, 0.20), transparent 28%),
+    linear-gradient(135deg, #031f31, #064a6d);
   color: #d8ecf5;
-  border-radius: 26px;
+  border-radius: 28px;
   box-shadow: 0 16px 36px rgba(7, 45, 68, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 footer p {
-  margin: 8px 0;
+  margin: 9px 0;
   font-size: 14px;
   line-height: 1.65;
+  color: #d8ecf5;
 }
 
 footer strong {
   color: #ffffff;
 }
 
-/* RESPONSIVE */
+/* ---------- ACCESSIBILITY AND POLISH ---------- */
+
+a {
+  color: var(--blue-700);
+}
+
+::selection {
+  background: rgba(0, 168, 216, 0.22);
+}
+
+/* Make keyboard focus visible if links/buttons are added */
+:focus-visible {
+  outline: 3px solid rgba(47, 128, 237, 0.7);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
 
 @media (max-width: 950px) {
   .page {
-    padding: 20px;
+    width: min(100% - 28px, var(--content-width));
+    padding: 24px 0 42px;
   }
 
   .hero {
     padding: 48px 32px;
+    border-radius: 26px;
+  }
+
+  .hero::after {
+    position: relative;
+    display: block;
+    right: auto;
+    bottom: auto;
+    margin-top: 30px;
   }
 
   .hero h1 {
-    font-size: 46px;
+    letter-spacing: -1.8px;
   }
 
   .hero-text {
@@ -243,13 +453,71 @@ footer strong {
 
   .section {
     padding: 28px;
+    border-radius: 24px;
   }
 
   .section h2 {
-    font-size: 26px;
+    font-size: 27px;
+    letter-spacing: -0.7px;
+  }
+
+  .section h2::before {
+    height: 26px;
+    vertical-align: -5px;
+  }
+
+  .section p {
+    font-size: 16px;
+    line-height: 1.72;
   }
 
   .grid-two {
     grid-template-columns: 1fr;
+  }
+
+  .vis {
+    padding: 14px;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    width: min(100% - 18px, var(--content-width));
+  }
+
+  .hero {
+    padding: 38px 24px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+  }
+
+  .section {
+    padding: 22px;
+  }
+
+  .section h2 {
+    font-size: 24px;
+  }
+
+  .section h3 {
+    font-size: 19px;
+  }
+
+  .vis {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .insight,
+  .insight-box {
+    padding: 15px 16px 15px 48px;
+  }
+
+  footer {
+    padding: 26px 24px;
   }
 }

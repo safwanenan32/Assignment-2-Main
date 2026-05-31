@@ -32,7 +32,29 @@
         falls, when it arrives, and which weather conditions are commonly linked with rain the next day.
       </p>
     </section>
-
+    <section class="section guide-section">
+  <h2>How to Read This Visual Story</h2>
+  <p>
+    This page follows rainfall from three angles: place, time, and weather conditions.
+    First, the map and rankings show where rainfall is concentrated. Next, the monthly
+    views show when rainfall changes across the year. Finally, the RainTomorrow and
+    wind-condition views show which historical conditions were commonly followed by
+    rain the next day.
+  </p>
+  <p>
+    The visualisation is designed for a general Australian audience, so the focus is on
+    clear comparison and interpretation rather than technical forecasting.
+  </p>
+</section>
+<section class="section">
+  <h2>Visualisation Roadmap</h2>
+  <p>
+    The page contains twelve linked visualisations: a rainfall map, wettest and driest
+    rankings, monthly heatmap, monthly slider, state rainfall box plot, yearly trend,
+    rainy-day scatterplot, RainTomorrow ranking, humidity and pressure condition views,
+    compass rose, wind comparison, and final rainfall profiles.
+  </p>
+</section>
     <!-- MAP SECTION -->
     <section class="section">
       <h2>1. Rainfall Begins With Geography</h2>
@@ -48,6 +70,10 @@
         near a wetter coastal or tropical location may experience rain very differently from someone in
         an inland or dry-region location.
       </p>
+      <div class="insight-box">
+  <strong>Key insight:</strong> Rainfall is geographically uneven. The map helps show why
+  Australian rainfall cannot be explained well by a single national average.
+</div>
       <div id="rainfall_map" class="vis"></div>
     </section>
 
@@ -107,6 +133,11 @@
         The slider adds interaction with a clear purpose: it lets the audience compare the same locations
         across different months without changing pages or hiding major sections of the story.
       </p>
+      <div class="insight-box">
+  <strong>Try this:</strong> Move the slider from January to July and compare northern
+  locations with southern cities. The pattern changes because rainfall is seasonal,
+  not just regional.
+</div>
       <div id="monthly_rainfall_slider" class="vis"></div>
     </section>
     <section class="section">
@@ -169,6 +200,10 @@
         recorded conditions at each location. It helps shift the story from “where rain falls” to “where
         rain is more likely to continue or arrive next.”
       </p>
+      <div class="insight-box">
+  <strong>Interpretation note:</strong> RainTomorrow is historical, not predictive. It shows
+  how often rain followed recorded conditions in the dataset.
+</div>
       <div id="rain_tomorrow_lollipop" class="vis"></div>
     </section>
 
